@@ -37,7 +37,8 @@ section + section {
 }
 
 .container {
-  max-width: 1180px;
+  width: min(100%, 1180px);
+  margin-inline: auto;
 }
 
 .card {
@@ -134,6 +135,7 @@ section + section {
 
 .hero-illustration {
   position: relative;
+  overflow: hidden;
   border-radius: 2rem;
   background:
     radial-gradient(520px 420px at 20% 20%, rgba(255, 224, 148, 0.28), transparent 70%),
@@ -160,6 +162,21 @@ section + section {
   right: -40px;
   background: radial-gradient(circle at center, rgba(47, 179, 136, 0.45), rgba(47, 179, 136, 0));
   filter: blur(0.5px);
+}
+
+@media (max-width: 1280px) {
+  .hero-illustration::after {
+    width: 120px;
+    height: 120px;
+    top: -24px;
+    right: -24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-illustration::after {
+    display: none;
+  }
 }
 
 .glass-tile {
