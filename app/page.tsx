@@ -57,7 +57,7 @@ function Header() {
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-6 pl-4 lg:flex">
           <Link href="#contato" className="btn btn-secondary">
             Fale com um consultor
           </Link>
@@ -65,9 +65,6 @@ function Header() {
             Quero iniciar hoje
           </Link>
         </div>
-        <Link href="#contato" className="btn btn-primary lg:!hidden">
-          Contato
-        </Link>
       </div>
     </header>
   );

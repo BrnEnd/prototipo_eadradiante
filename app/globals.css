@@ -54,30 +54,40 @@ section + section {
 }
 
 .btn {
-  @apply inline-flex h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffd55f];
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3
+         text-sm font-semibold leading-none whitespace-nowrap transition;
+  height: 44px; /* força altura uniforme */
 }
 
 .btn-primary {
   background: linear-gradient(135deg, #ffd55f, #ffb43f 55%, #ff9c2b 100%);
   color: #11213d;
-  box-shadow: 0 16px 32px rgba(255, 181, 71, 0.35);
+  box-shadow: 0 12px 24px rgba(255, 138, 36, 0.28);
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, #ffe07c, #ffc257 55%, #ffa239 100%);
-  box-shadow: 0 24px 38px rgba(255, 193, 86, 0.4);
+  box-shadow: 0 18px 32px rgba(255, 159, 68, 0.32);
 }
 
 .btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full text-sm font-semibold;
+  min-width: 170px;
+  padding: 0 24px;         /* garante o mesmo “respiro” do primário */
+  background: rgba(6, 44, 33, 0.85);
   border: 1px solid rgba(255, 213, 95, 0.55);
-  background: rgba(6, 44, 33, 0.75);
   color: var(--fg);
-  box-shadow: inset 0 0 0 1px rgba(255, 213, 95, 0.18);
+  box-shadow: 0 8px 20px rgba(6, 44, 33, 0.25);
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 224, 138, 0.9);
-  background: rgba(7, 58, 42, 0.85);
+  background: rgba(8, 58, 44, 0.9);
+  border-color: rgba(255, 224, 138, 0.85);
+}
+
+.btn-primary,
+.btn-secondary {
+  @apply min-w-[170px] text-sm font-semibold py-3 px-6;
 }
 
 .btn-ghost {
@@ -88,6 +98,14 @@ section + section {
 
 .btn-ghost:hover {
   background: rgba(5, 44, 32, 0.8);
+}
+
+.btn:focus,
+.btn:focus-visible {
+  outline: none;
+}
+.btn-secondary:focus-visible {
+  box-shadow: 0 0 0 2px rgba(255, 224, 138, 0.35), 0 8px 20px rgba(6,44,33,0.25);
 }
 
 .badge {
@@ -148,9 +166,31 @@ section + section {
 .hero-illustration::before {
   content: "";
   position: absolute;
-  inset: 12%;
+  inset: 0.75rem; /* distância uniforme para criar a “segunda borda” */
   border-radius: 1.75rem;
-  border: 1px dashed rgba(94, 234, 212, 0.32);
+  border: 1px dashed rgba(94, 234, 212, 0.18);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Mantém o conteúdo acima da moldura */
+.hero-illustration > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsividade: dá ainda mais respiro em telas médias */
+@media (max-width: 1024px) {
+  .hero-illustration::before {
+    inset: 20% 8% 12% 8%;
+  }
+}
+
+/* Em telas pequenas, esconda (ou deixe bem mais recuado) para não “brigar” com o texto */
+@media (max-width: 640px) {
+  .hero-illustration::before {
+    display: none; /* alternativa: inset: 24% 6% 10% 6%; */
+  }
 }
 
 .hero-illustration::after {
@@ -214,23 +254,21 @@ section + section {
   background: rgba(6, 42, 32, 0.75);
 }
 
-.whatsapp-float {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1.3rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #03112a;
-  font-weight: 600;
-  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.35);
+#whatsapp-float {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
 }
 
 .whatsapp-float:hover {
   background: linear-gradient(135deg, #34d399, #22c55e);
+}
+
+#whatsapp-float.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 @media (max-width: 768px) {
