@@ -17,7 +17,7 @@ const navigation = [
 
 function TopBar() {
   return (
-    <div className="border-b border-white/10 bg-[#05143a]/90 backdrop-blur">
+    <div className="border-b border-white/10 bg-[#042219]/90 backdrop-blur">
       <div className="container mx-auto flex flex-col gap-3 px-4 py-2 text-[0.75rem] text-mute md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {topInfos.map((info) => (
@@ -38,7 +38,7 @@ function TopBar() {
 
 function Header() {
   return (
-    <header className="sticky top-0 z-30 border-b border-white/10 bg-[#010b23]/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-[#02140f]/85 backdrop-blur-xl">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <Link href="#" className="flex items-center gap-4">
           <span className="relative flex h-12 w-12 items-center justify-center rounded-3xl bg-gradient-to-br from-brand-400 via-brand-500 to-[#ffd55f] text-[#102344] shadow-glow">
@@ -57,7 +57,7 @@ function Header() {
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-6 pl-4 lg:flex">
           <Link href="#contato" className="btn btn-secondary">
             Fale com um consultor
           </Link>
@@ -65,9 +65,6 @@ function Header() {
             Quero iniciar hoje
           </Link>
         </div>
-        <Link href="#contato" className="btn btn-primary lg:hidden">
-          Contato
-        </Link>
       </div>
     </header>
   );
@@ -88,16 +85,16 @@ const heroHighlights = [
 function Hero() {
   return (
     <section className="gradient-hero">
-      <div className="container relative z-10 mx-auto grid items-center gap-16 px-4 pb-24 pt-16 md:grid-cols-[1.15fr_0.85fr]">
-        <div>
+      <div className="container relative z-10 grid items-center gap-12 px-4 pb-20 pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] xl:gap-16">
+        <div className="space-y-6 lg:space-y-8">
           <span className="badge">Universidade corporativa EaD</span>
-          <h1 className="mt-6 text-4xl font-semibold leading-tight md:text-5xl md:leading-tight">
+          <h1 className="mt-6 text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl lg:leading-tight">
             Uma experiência luminosa para acelerar sua carreira
           </h1>
-          <p className="mt-5 max-w-2xl text-base text-mute md:text-lg">
+          <p className="mt-5 max-w-2xl text-base text-mute sm:text-lg lg:max-w-3xl">
             A EaD Radiante combina tecnologia, acolhimento e acompanhamento para quem busca graduação, pós-graduação ou formações pedagógicas com credibilidade. Flexibilidade para estudar quando quiser, com a segurança de uma instituição reconhecida pelo MEC.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4 lg:gap-5">
             <Link href="#modalidades" className="btn btn-primary">
               Conheça os cursos
             </Link>
@@ -105,15 +102,15 @@ function Hero() {
               Veja como funciona
             </Link>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-3 sm:gap-5">
             {heroStats.map((stat) => (
               <div key={stat.label} className="glass-tile">
-                <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                <p className="text-xl font-semibold text-white lg:text-2xl">{stat.value}</p>
                 <p className="mt-1 text-xs uppercase tracking-[0.3em] text-[#ffe08a]">{stat.label}</p>
               </div>
             ))}
           </div>
-          <div className="mt-10 grid gap-3 text-sm text-mute md:max-w-lg">
+          <div className="mt-10 grid gap-3 text-sm text-mute sm:max-w-lg">
             {heroHighlights.map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <span className="mt-1 h-2 w-2 rounded-full bg-brand-400" />
@@ -122,9 +119,9 @@ function Hero() {
             ))}
           </div>
         </div>
-        <div className="relative">
-          <div className="absolute -left-16 top-12 hidden h-24 w-24 rounded-full bg-gradient-to-tr from-brand-300/40 to-brand-100/10 blur-3xl md:block" />
-          <div className="hero-illustration p-10">
+        <div className="relative mx-auto w-full max-w-lg sm:max-w-xl lg:mx-0 lg:max-w-lg xl:max-w-xl">
+          <div className="absolute -left-16 top-12 hidden h-24 w-24 rounded-full bg-gradient-to-tr from-emerald-300/40 to-emerald-100/10 blur-3xl lg:block" />
+          <div className="hero-illustration p-8 sm:p-10 lg:p-12">
             <div className="relative z-10 space-y-6">
               <div>
                 <p className="section-subtitle">Portal exclusivo</p>
@@ -134,16 +131,16 @@ function Hero() {
                 </p>
               </div>
               <div className="grid gap-3 text-sm text-mute">
-                <div className="rounded-2xl border border-white/10 bg-[#081a44]/80 p-4">
+                <div className="rounded-2xl border border-white/10 bg-[#073b2a]/80 p-4">
                   <p className="text-xs uppercase tracking-[0.45em] text-[#ffe08a]">Trilhas guiadas</p>
                   <p className="mt-1 text-white">Planos personalizados conforme sua disponibilidade semanal.</p>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-[#081a44]/80 p-4">
-                  <p className="text-xs uppercase tracking-[0.45em] text-[#94b1ff]">Suporte integrado</p>
+                <div className="rounded-2xl border border-white/10 bg-[#073b2a]/80 p-4">
+                  <p className="text-xs uppercase tracking-[0.45em] text-[#67f0c6]">Suporte integrado</p>
                   <p className="mt-1 text-white">Equipe pedagógica, mentoria e atendimento administrativo em um clique.</p>
                 </div>
               </div>
-              <div className="flex flex-col gap-2 rounded-2xl border border-[#ffe08a]/20 bg-[#0a1f4e]/80 p-4 text-sm text-mute">
+              <div className="flex flex-col gap-2 rounded-2xl border border-[#ffe08a]/20 bg-[#084230]/80 p-4 text-sm text-mute">
                 <p>Agenda semanal com lembretes inteligentes</p>
                 <p className="text-xs uppercase tracking-[0.35em] text-[#ffe08a]">Integração com app mobile</p>
               </div>
@@ -157,22 +154,24 @@ function Hero() {
 
 function AtendimentoRibbon() {
   return (
-    <section className="container -mt-10 px-4">
-      <div className="ribbon relative z-20 flex flex-col gap-6 rounded-3xl px-8 py-10 md:flex-row md:items-center md:justify-between">
-        <div>
-          <p className="section-heading">Atendimento ágil</p>
-          <h3 className="mt-4 text-2xl font-semibold">Consultores prontos para indicar o melhor caminho</h3>
-          <p className="mt-2 text-sm text-mute">
-            Entre em contato e descubra bolsas, documentação necessária e prazos de entrada mais próximos.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <Link href="https://wa.me/5535999550895" className="btn btn-primary" target="_blank">
-            Conversar no WhatsApp
-          </Link>
-          <Link href="#catalogo" className="btn btn-secondary">
-            Baixar catálogo de cursos
-          </Link>
+    <section className="relative z-20 px-4">
+      <div className="container -mt-12 max-w-5xl sm:-mt-16">
+        <div className="ribbon flex flex-col gap-6 rounded-3xl px-6 py-8 md:flex-row md:items-center md:justify-between md:gap-10 md:px-8 md:py-10">
+          <div>
+            <p className="section-heading">Atendimento ágil</p>
+            <h3 className="mt-4 text-2xl font-semibold">Consultores prontos para indicar o melhor caminho</h3>
+            <p className="mt-2 text-sm text-mute">
+              Entre em contato e descubra bolsas, documentação necessária e prazos de entrada mais próximos.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="https://wa.me/5535999550895" className="btn btn-primary" target="_blank">
+              Conversar no WhatsApp
+            </Link>
+            <Link href="#catalogo" className="btn btn-secondary">
+              Baixar catálogo de cursos
+            </Link>
+          </div>
         </div>
       </div>
     </section>
@@ -227,7 +226,7 @@ function Modalidades() {
           Como é estudar na Radiante
         </Link>
       </div>
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {modalidades.map((modalidade) => (
           <div key={modalidade.titulo} className="card flex h-full flex-col p-6">
             <span className="badge">{modalidade.destaque}</span>
@@ -284,7 +283,7 @@ function Diferenciais() {
             Um ecossistema digital pensado para apoiar cada fase da sua formação, do ingresso à conclusão.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
           {diferenciais.map((item) => (
             <div key={item.titulo} className="card p-6">
               <h3 className="text-lg font-semibold text-white">{item.titulo}</h3>
@@ -330,10 +329,10 @@ function Metodologia() {
           A união entre tecnologia, acompanhamento humano e avaliações objetivas garante ritmo de aprendizado consistente.
         </p>
       </div>
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
+      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:gap-8">
         {metodologia.map((item) => (
           <div key={item.titulo} className="card p-6">
-            <span className="text-xs font-semibold uppercase tracking-[0.4em] text-[#94b1ff]">{item.etapa}</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.4em] text-[#67f0c6]">{item.etapa}</span>
             <h3 className="mt-3 text-xl font-semibold text-white">{item.titulo}</h3>
             <p className="mt-3 text-sm text-mute">{item.descricao}</p>
           </div>
@@ -371,7 +370,7 @@ function Depoimentos() {
           Resultados de quem escolheu estudar com liberdade, acolhimento e reconhecimento de mercado.
         </p>
       </div>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {depoimentos.map((depo) => (
           <div key={depo.nome} className="card flex h-full flex-col justify-between p-6">
             <p className="text-sm leading-relaxed text-mute">“{depo.mensagem}”</p>
@@ -396,7 +395,7 @@ function Credenciais() {
   ];
   return (
     <section className="container mx-auto px-4 py-16">
-      <div className="card flex flex-col items-center gap-8 p-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
+      <div className="card flex flex-col items-center gap-8 p-10 text-center md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-10 md:text-left lg:gap-16">
         <div className="max-w-xl">
           <p className="section-heading">Rede de confiança</p>
           <h3 className="mt-4 text-2xl font-semibold">Mais de duas décadas iluminando trajetórias</h3>
@@ -446,7 +445,7 @@ function FAQ() {
           Selecionamos as principais dúvidas dos estudantes para você planejar sua matrícula com confiança.
         </p>
       </div>
-      <div className="mt-12 grid gap-5 md:grid-cols-2">
+      <div className="mt-12 grid gap-5 md:gap-6 lg:grid-cols-2">
         {faq.map((item) => (
           <div key={item.pergunta} className="faq-item">
             <p className="text-sm font-semibold text-white">{item.pergunta}</p>
@@ -461,7 +460,7 @@ function FAQ() {
 function Matricula() {
   return (
     <section id="matricula" className="container mx-auto px-4 py-20">
-      <div className="card grid gap-8 p-8 md:grid-cols-[1.2fr_1fr]">
+      <div className="card grid gap-8 p-8 md:grid-cols-2 md:gap-10 lg:grid-cols-[1.2fr_1fr] lg:p-10">
         <div>
           <p className="section-heading">Pronto para começar?</p>
           <h3 className="mt-4 text-2xl font-semibold">Fale com nossos consultores educacionais</h3>
@@ -474,10 +473,10 @@ function Matricula() {
             <p>Unidade: Rua Silviano Brandão, 476 – Elói Mendes, MG</p>
           </div>
         </div>
-        <form className="grid gap-4">
-          <input className="rounded-2xl border border-white/10 bg-[#04163a]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu nome" />
-          <input className="rounded-2xl border border-white/10 bg-[#04163a]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu e-mail" />
-          <select className="rounded-2xl border border-white/10 bg-[#04163a]/70 px-4 py-3 text-sm text-white">
+        <form className="grid gap-4 md:gap-5">
+          <input className="rounded-2xl border border-white/10 bg-[#06261d]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu nome" />
+          <input className="rounded-2xl border border-white/10 bg-[#06261d]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu e-mail" />
+          <select className="rounded-2xl border border-white/10 bg-[#06261d]/70 px-4 py-3 text-sm text-white">
             <option className="text-gray-900">Selecione a área de interesse</option>
             <option className="text-gray-900">Educação e Pedagogia</option>
             <option className="text-gray-900">Administração &amp; MBA</option>
@@ -488,7 +487,7 @@ function Matricula() {
             <option className="text-gray-900">Outra área</option>
           </select>
           <textarea
-            className="min-h-[120px] rounded-2xl border border-white/10 bg-[#04163a]/70 px-4 py-3 text-sm text-white placeholder:text-mute"
+            className="min-h-[120px] rounded-2xl border border-white/10 bg-[#06261d]/70 px-4 py-3 text-sm text-white placeholder:text-mute"
             placeholder="Conte-nos como podemos ajudar"
           />
           <button type="button" className="btn btn-primary">
@@ -504,7 +503,7 @@ function Matricula() {
 function Footer() {
   return (
     <footer id="contato" className="footer">
-      <div className="container mx-auto grid gap-8 px-4 py-12 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="container grid gap-8 px-4 py-12 md:grid-cols-2 md:gap-10 lg:grid-cols-[1.2fr_1fr_1fr] lg:gap-12">
         <div className="space-y-4">
           <Link href="#" className="flex items-center gap-3">
             <span className="relative flex h-10 w-10 items-center justify-center rounded-3xl bg-gradient-to-br from-brand-400 via-brand-500 to-[#ffd55f] text-[#102344]">
