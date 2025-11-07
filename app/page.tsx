@@ -65,7 +65,7 @@ function Header() {
             Quero iniciar hoje
           </Link>
         </div>
-        <Link href="#contato" className="btn btn-primary lg:hidden">
+        <Link href="#contato" className="btn btn-primary lg:!hidden">
           Contato
         </Link>
       </div>
