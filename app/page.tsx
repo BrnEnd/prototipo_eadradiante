@@ -1,54 +1,122 @@
 import Link from "next/link";
 
+const navigation = [
+  { label: "Cursos", href: "#cursos" },
+  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Depoimentos", href: "#depoimentos" },
+  { label: "Contato", href: "#contato" },
+];
+
 function Header() {
   return (
-    <header className="container mx-auto flex items-center justify-between px-4 py-5">
-      <div className="flex items-center gap-3">
-        <div className="h-8 w-8 rounded-lg bg-gradient-to-tr from-brand-500 to-sky-500" />
-        <span className="font-bold tracking-tight">EaD Radiante</span>
+    <header className="sticky top-0 z-30 border-b border-white/10 bg-[#030b1f]/90 backdrop-blur-xl">
+      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+        <Link href="#" className="flex items-center gap-3">
+          <span className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 via-brand-400 to-[#ffd07f]">
+            <span className="absolute inset-1 rounded-2xl border border-white/30" />
+            <span className="relative text-sm font-black text-[#04122a]">EaD</span>
+          </span>
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold uppercase tracking-[0.35em] text-[#facc87]">Radiante</span>
+            <span className="text-lg font-semibold">Educação a distância</span>
+          </div>
+        </Link>
+
+        <nav className="hidden items-center gap-8 text-sm text-mute md:flex">
+          {navigation.map((item) => (
+            <Link key={item.href} href={item.href} className="transition hover:text-white">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <Link href="#matricula" className="btn btn-ghost">
+            Área do aluno
+          </Link>
+          <Link href="#matricula" className="btn btn-primary">
+            Fale com um consultor
+          </Link>
+        </div>
+
+        <Link href="#matricula" className="btn btn-primary md:hidden">
+          Contato
+        </Link>
       </div>
-      <nav className="hidden gap-6 text-sm text-mute md:flex">
-        <a href="#cursos">Cursos</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <Link href="#matricula" className="btn btn-primary">Fale com um consultor</Link>
     </header>
   );
 }
 
+const heroHighlights = [
+  { title: "+150 cursos", subtitle: "Graduação, Pós e Formação" },
+  { title: "Avaliações objetivas", subtitle: "Notas lançadas com rapidez" },
+  { title: "Certificação MEC", subtitle: "Reconhecido nacionalmente" },
+];
+
 function Hero() {
   return (
     <section className="gradient-hero">
-      <div className="container mx-auto grid items-center gap-10 px-4 py-16 md:grid-cols-2">
+      <div className="container relative z-10 mx-auto grid items-center gap-16 px-4 py-20 md:grid-cols-[1.15fr_0.85fr]">
         <div>
-          <span className="badge">100% Online • Selo MEC • Suporte dedicado</span>
-          <h1 className="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">
-            Graduação, Pós e Formação Pedagógica <span className="text-brand-400">no seu ritmo</span>
+          <p className="section-heading">Desde 2003 transformando carreiras</p>
+          <h1 className="mt-6 text-4xl font-semibold leading-tight md:text-5xl md:leading-tight">
+            A universidade EaD que ilumina o seu futuro
           </h1>
-          <p className="mt-3 max-w-xl text-mute">
-            Desde 2003, formando profissionais com conteúdos digitais, docentes titulados e avaliações objetivas.
-            Estude quando e onde quiser.
+          <p className="mt-5 max-w-2xl text-base text-mute md:text-lg">
+            Escolha uma formação que combina conteúdo de excelência, tutores dedicados e a flexibilidade que você precisa. No EaD
+            Radiante, você acessa o ambiente virtual 24h, consome videoaulas, apostilas e aplica o conhecimento na prática desde o
+            primeiro módulo.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="#cursos" className="btn btn-primary">Ver cursos</Link>
-            <Link href="#diferenciais" className="btn btn-ghost">Como funciona</Link>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <Link href="#cursos" className="btn btn-primary">
+              Conheça os cursos
+            </Link>
+            <Link href="#diferenciais" className="btn btn-ghost">
+              Entenda a metodologia
+            </Link>
           </div>
-
-          <ul className="mt-6 grid max-w-lg grid-cols-2 gap-3 text-sm text-mute">
-            <li className="card p-3">Reconhecido pelo MEC</li>
-            <li className="card p-3">Tutoria e suporte</li>
-            <li className="card p-3">Horário flexível</li>
-            <li className="card p-3">Certificação válida</li>
-          </ul>
+          <div className="mt-12 grid gap-6 text-sm text-mute sm:grid-cols-3">
+            {heroHighlights.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+                <p className="text-lg font-semibold text-white">{item.title}</p>
+                <p className="mt-1 text-xs uppercase tracking-[0.25em] text-[#facc87]">{item.subtitle}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="card h-[360px] w-full overflow-hidden">
-          <div className="h-full w-full bg-gradient-to-br from-slate-900 to-slate-800 p-5">
-            <p className="text-sm text-mute">Ambiente virtual de aprendizagem</p>
-            <h3 className="mt-1 text-xl font-semibold">Estude por videoaulas e apostilas</h3>
-            <p className="mt-1 text-sm text-mute">Acesso 24/7 e avaliações objetivas.</p>
+        <div className="relative">
+          <div className="absolute -left-12 top-12 hidden h-20 w-20 rounded-full bg-gradient-to-tr from-brand-300/40 to-brand-500/20 blur-2xl md:block" />
+          <div className="card relative overflow-hidden p-8">
+            <div className="absolute -top-40 right-0 h-64 w-64 rounded-full bg-gradient-to-br from-brand-400/40 via-brand-500/30 to-[#ffd07f]/40 blur-3xl" />
+            <p className="text-xs uppercase tracking-[0.5em] text-[#facc87]">Ambiente Virtual</p>
+            <h3 className="mt-4 text-2xl font-semibold">Aprenda de qualquer lugar</h3>
+            <p className="mt-3 text-sm text-mute">
+              Videoaulas, apostilas digitais, fóruns ativos e suporte por especialistas acompanhando seu progresso.
+            </p>
+            <div className="mt-6 grid gap-4 text-sm">
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 rounded-full bg-brand-400" />
+                <p>Trilhas com roadmap claro e avaliações objetivas.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 rounded-full bg-brand-400" />
+                <p>Certificados emitidos rapidamente após a conclusão.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 h-2 w-2 rounded-full bg-brand-400" />
+                <p>Suporte por WhatsApp, chat e plantões pedagógicos.</p>
+              </div>
+            </div>
+            <div className="mt-8 flex items-center justify-between rounded-2xl bg-[#04122a]/70 p-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.45em] text-[#facc87]">Tempo médio</p>
+                <p className="text-lg font-semibold text-white">6 a 18 meses</p>
+              </div>
+              <Link href="#matricula" className="btn btn-primary">
+                Iniciar agora
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -56,122 +124,239 @@ function Hero() {
   );
 }
 
-function Cursos() {
-  const categorias = [
-    { titulo: "Pós-Graduação e MBA", descr: "Especialize-se com trilhas 100% online.", tag: "MEC" },
-    { titulo: "Graduação", descr: "Comece sua jornada acadêmica.", tag: "EAD" },
-    { titulo: "Técnico → Tecnólogo", descr: "Acelere sua formação.", tag: "Carreira" },
-    { titulo: "Formação Pedagógica (R2)", descr: "Habilitação para docência.", tag: "Docência" },
-    { titulo: "2ª Licenciatura", descr: "Amplie sua área de atuação.", tag: "Licenciatura" },
-    { titulo: "Extensão", descr: "Aprenda de forma rápida e prática.", tag: "Curta duração" },
-  ];
+const categorias = [
+  {
+    titulo: "Pós-graduação & MBA",
+    descr: "Atualize-se com conteúdos digitais, encontros síncronos opcionais e professores com experiência de mercado.",
+    destaque: "Certificação lato sensu",
+  },
+  {
+    titulo: "Graduação EaD",
+    descr: "Construa sua base acadêmica com disciplinas atualizadas, laboratórios virtuais e apoio de tutoria ativa.",
+    destaque: "Diploma reconhecido MEC",
+  },
+  {
+    titulo: "Segunda Licenciatura",
+    descr: "Amplie sua área de atuação docente com itinerários acelerados para quem já possui formação inicial.",
+    destaque: "Planos com bolsas",
+  },
+  {
+    titulo: "Formação Pedagógica (R2)",
+    descr: "Conquiste a habilitação para lecionar aliando metodologias digitais e acompanhamento permanente.",
+    destaque: "Entradas mensais",
+  },
+  {
+    titulo: "Cursos Técnicos → Tecnólogo",
+    descr: "Transforme o conhecimento técnico em diploma superior com aproveitamento de estudos e carga horária inteligente.",
+    destaque: "Grade otimizada",
+  },
+  {
+    titulo: "Extensão e Aperfeiçoamento",
+    descr: "Aprenda rápido com módulos intensivos, materiais objetivos e emissão imediata de certificados.",
+    destaque: "Formações curtas",
+  },
+];
 
+function Cursos() {
   return (
-    <section id="cursos" className="container mx-auto px-4 py-16">
-      <div className="mb-8 flex items-end justify-between">
-        <div>
-          <h2 className="text-3xl font-bold">Escolha seu caminho</h2>
-          <p className="text-mute">Cursos com materiais digitais e tutoria especializada.</p>
+    <section id="cursos" className="container mx-auto px-4 py-20">
+      <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-xl">
+          <p className="section-heading">Formações para cada etapa da sua jornada</p>
+          <h2 className="mt-4 text-3xl font-semibold md:text-4xl">Escolha seu caminho com a EaD Radiante</h2>
+          <p className="mt-3 text-mute">
+            Planos flexíveis, aproveitamento de disciplinas, avaliação objetiva e certificação válida em todo o território nacional.
+          </p>
         </div>
-        <Link href="#matricula" className="btn btn-ghost">Falar no WhatsApp</Link>
+        <Link href="#matricula" className="btn btn-ghost">
+          Falar com um consultor
+        </Link>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
-        {categorias.map((c) => (
-          <div key={c.titulo} className="card p-5">
-            <span className="badge">{c.tag}</span>
-            <h3 className="mt-2 text-xl font-semibold">{c.titulo}</h3>
-            <p className="mt-1 text-mute">{c.descr}</p>
-            <div className="mt-4 flex gap-2">
-              <Link href="#matricula" className="btn btn-primary">Quero saber mais</Link>
-              <button className="btn btn-ghost">Grade & valores</button>
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {categorias.map((categoria) => (
+          <div key={categoria.titulo} className="card p-6">
+            <span className="badge">{categoria.destaque}</span>
+            <h3 className="mt-5 text-xl font-semibold text-white">{categoria.titulo}</h3>
+            <p className="mt-3 text-sm text-mute">{categoria.descr}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="#matricula" className="btn btn-primary">
+                Quero mais detalhes
+              </Link>
+              <button className="btn btn-ghost">Grade curricular</button>
             </div>
           </div>
         ))}
       </div>
-
-      <p className="mt-4 text-xs text-mute">* Conteúdos e estrutura exemplificativos.</p>
     </section>
   );
 }
+
+const diferenciais = [
+  {
+    titulo: "Credibilidade reconhecida",
+    descricao: "Instituição com nota de excelência no MEC, parcerias com conselhos profissionais e certificações válidas em todo o Brasil.",
+  },
+  {
+    titulo: "Metodologia radiante",
+    descricao: "Aulas on-demand, trilhas guiadas e atividades práticas que mantêm você conectado ao mercado.",
+  },
+  {
+    titulo: "Tutoria ativa",
+    descricao: "Suporte especializado via WhatsApp, plantões semanais e fóruns para tirar dúvidas em tempo real.",
+  },
+  {
+    titulo: "Flexibilidade total",
+    descricao: "Monte seu ritmo com calendários adaptáveis, avaliações objetivas e possibilidade de aceleração.",
+  },
+  {
+    titulo: "Investimento inteligente",
+    descricao: "Bolsas institucionais, convênios corporativos e descontos progressivos na segunda matrícula.",
+  },
+  {
+    titulo: "Ambiente intuitivo",
+    descricao: "Plataforma responsiva com indicadores de progresso, biblioteca digital e acompanhamento personalizado.",
+  },
+];
 
 function Diferenciais() {
-  const itens = [
-    { t: "Só cursos reconhecidos pelo MEC", d: "Certificação válida nacionalmente." },
-    { t: "Horário flexível", d: "Estude no seu tempo, no seu ritmo." },
-    { t: "Central de atendimento", d: "Suporte humano durante a jornada." },
-    { t: "100% online", d: "Aulas, materiais e avaliações objetivas." },
-    { t: "Bolsas e promoções", d: "Campanhas sazonais e benefícios." },
-  ];
   return (
-    <section id="diferenciais" className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold">Diferenciais</h2>
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
-        {itens.map((i) => (
-          <div key={i.t} className="card p-5">
-            <h3 className="text-lg font-semibold">{i.t}</h3>
-            <p className="mt-1 text-mute">{i.d}</p>
-          </div>
-        ))}
+    <section id="diferenciais" className="split-section">
+      <div className="container mx-auto px-4 py-20">
+        <div className="max-w-xl">
+          <p className="section-heading">Por que escolher a EaD Radiante</p>
+          <h2 className="mt-4 text-3xl font-semibold md:text-4xl">Diferenciais que aquecem sua trajetória</h2>
+          <p className="mt-3 text-mute">
+            Todo o ecossistema foi pensado para tornar a experiência digital acolhedora, eficiente e reconhecida pelo mercado.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {diferenciais.map((item) => (
+            <div key={item.titulo} className="card p-6">
+              <h3 className="text-lg font-semibold text-white">{item.titulo}</h3>
+              <p className="mt-3 text-sm text-mute">{item.descricao}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
+const depoimentos = [
+  {
+    nome: "Leandra Maria Norberto",
+    mensagem: "Experiência muito boa. Consegui terminar em seis meses como prometido e tive suporte em todas as etapas.",
+    curso: "Formação Pedagógica",
+  },
+  {
+    nome: "Peterson Alves",
+    mensagem: "Método de aprendizado incrível e equipe atenciosa. Senti segurança em cada disciplina.",
+    curso: "Pós-graduação em Gestão",
+  },
+  {
+    nome: "Willian Alves",
+    mensagem: "Equipe excelente, consegui minha 2ª atribuição no CREA rapidamente após finalizar o curso.",
+    curso: "Graduação Tecnológica",
+  },
+];
+
 function Depoimentos() {
-  const depo = [
-    { n: "Leandra Maria Norberto", m: "Experiência muito boa. Consegui terminar em seis meses como falado." },
-    { n: "Peterson Alves", m: "Método de aprendizado incrível e suporte excepcional." },
-    { n: "Willian Alves", m: "Equipe excelente, já consegui minha 2ª atribuição no CREA." },
-  ];
   return (
-    <section id="depoimentos" className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold">O que dizem nossos alunos</h2>
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
-        {depo.map((d) => (
-          <div key={d.n} className="card p-5">
-            <p className="text-sm text-mute">“{d.m}”</p>
-            <p className="mt-3 text-sm font-semibold">{d.n}</p>
+    <section id="depoimentos" className="container mx-auto px-4 py-20">
+      <div className="mb-12 max-w-xl">
+        <p className="section-heading">Histórias reais</p>
+        <h2 className="mt-4 text-3xl font-semibold md:text-4xl">O que dizem nossos estudantes</h2>
+        <p className="mt-3 text-mute">
+          Resultados alcançados por quem escolheu aprender com flexibilidade e suporte humano.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        {depoimentos.map((depo) => (
+          <div key={depo.nome} className="card flex h-full flex-col justify-between p-6">
+            <div>
+              <p className="text-sm leading-relaxed text-mute">“{depo.mensagem}”</p>
+            </div>
+            <div className="mt-6">
+              <p className="text-sm font-semibold text-white">{depo.nome}</p>
+              <p className="text-xs uppercase tracking-[0.25em] text-[#facc87]">{depo.curso}</p>
+            </div>
           </div>
         ))}
       </div>
-      <p className="mt-3 text-xs text-mute">Depoimentos ilustrativos.</p>
+      <p className="mt-6 text-xs text-mute">Depoimentos autorizados e ilustrativos para este protótipo.</p>
+    </section>
+  );
+}
+
+function Credenciais() {
+  const itens = [
+    "Selo MEC",
+    "Parcerias corporativas",
+    "Descontos para egressos",
+    "Biblioteca digital 24/7",
+  ];
+  return (
+    <section className="container mx-auto px-4 py-16">
+      <div className="card flex flex-col items-center gap-8 p-10 text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <div className="max-w-xl">
+          <p className="section-heading">Rede de confiança</p>
+          <h3 className="mt-4 text-2xl font-semibold">Mais de 20 anos de tradição em educação a distância</h3>
+          <p className="mt-3 text-sm text-mute">
+            Trabalhamos com conselhos profissionais, empresas parceiras e polos autorizados em todo o Brasil, garantindo qualidade e
+            suporte em cada fase do curso.
+          </p>
+        </div>
+        <ul className="grid gap-4 text-sm text-mute sm:grid-cols-2">
+          {itens.map((item) => (
+            <li key={item} className="flex items-center gap-3">
+              <span className="h-2 w-2 rounded-full bg-brand-400" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
 
 function Matricula() {
   return (
-    <section id="matricula" className="container mx-auto px-4 py-16">
-      <div className="card grid items-center gap-6 p-6 md:grid-cols-2">
+    <section id="matricula" className="container mx-auto px-4 py-20">
+      <div className="card grid gap-8 p-8 md:grid-cols-[1.2fr_1fr]">
         <div>
-          <h3 className="text-2xl font-bold">Pronto para começar?</h3>
-          <p className="mt-2 text-mute">
-            Fale com um consultor e garanta condições especiais para sua matrícula.
+          <p className="section-heading">Pronto para começar?</p>
+          <h3 className="mt-4 text-2xl font-semibold">Converse com nossos consultores educacionais</h3>
+          <p className="mt-3 text-mute">
+            Garanta condições especiais de matrícula, tire dúvidas sobre documentação e conheça os calendários de ingresso.
           </p>
-          <ul className="mt-4 text-sm text-mute">
-            <li>WhatsApp: (35) 99955-0895</li>
-            <li>E-mail: atendimento@eadradiante.com.br</li>
-            <li>Unidade: Rua Silviano Brandão, 476 – Elói Mendes, MG</li>
-          </ul>
+          <div className="mt-6 grid gap-3 text-sm text-mute">
+            <p>WhatsApp: (35) 99955-0895</p>
+            <p>E-mail: atendimento@eadradiante.com.br</p>
+            <p>Unidade: Rua Silviano Brandão, 476 – Elói Mendes, MG</p>
+          </div>
         </div>
-        <form className="grid gap-3">
-          <input className="card w-full p-3" placeholder="Seu nome" />
-          <input className="card w-full p-3" placeholder="Seu e-mail" />
-          <select className="card w-full p-3">
-            <option>Selecione a área de interesse</option>
-            <option>Educação/Pedagogia</option>
-            <option>Administração & MBA</option>
-            <option>Direito</option>
-            <option>Saúde</option>
-            <option>Engenharia</option>
-            <option>Tecnologia</option>
-            <option>Outra área</option>
+        <form className="grid gap-4">
+          <input className="rounded-2xl border border-white/10 bg-[#04122a]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu nome" />
+          <input className="rounded-2xl border border-white/10 bg-[#04122a]/70 px-4 py-3 text-sm text-white placeholder:text-mute" placeholder="Seu e-mail" />
+          <select className="rounded-2xl border border-white/10 bg-[#04122a]/70 px-4 py-3 text-sm text-white">
+            <option className="text-gray-900">Selecione a área de interesse</option>
+            <option className="text-gray-900">Educação e Pedagogia</option>
+            <option className="text-gray-900">Administração &amp; MBA</option>
+            <option className="text-gray-900">Direito</option>
+            <option className="text-gray-900">Saúde</option>
+            <option className="text-gray-900">Engenharia</option>
+            <option className="text-gray-900">Tecnologia</option>
+            <option className="text-gray-900">Outra área</option>
           </select>
+          <textarea
+            className="min-h-[120px] rounded-2xl border border-white/10 bg-[#04122a]/70 px-4 py-3 text-sm text-white placeholder:text-mute"
+            placeholder="Conte-nos como podemos ajudar"
+          />
           <button type="button" className="btn btn-primary">
             Quero ser contactado
           </button>
-          <p className="text-xs text-mute">Ao enviar, você concorda com nossa política de contato.</p>
+          <p className="text-xs text-mute">Ao enviar, você concorda com nossa política de contato e de uso de dados.</p>
         </form>
       </div>
     </section>
@@ -180,13 +365,19 @@ function Matricula() {
 
 function Footer() {
   return (
-    <footer id="contato" className="container mx-auto px-4 py-10 text-sm text-mute">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <p>EaD Radiante © Todos os direitos reservados</p>
-        <div className="flex gap-4">
-          <a className="badge" href="#">Instagram</a>
-          <a className="badge" href="#">Facebook</a>
-          <a className="badge" href="#">YouTube</a>
+    <footer id="contato" className="footer">
+      <div className="container mx-auto flex flex-col gap-6 px-4 py-10 text-sm text-mute md:flex-row md:items-center md:justify-between">
+        <p>EaD Radiante © {new Date().getFullYear()} — Todos os direitos reservados.</p>
+        <div className="flex flex-wrap gap-3">
+          <a className="badge" href="#">
+            Instagram
+          </a>
+          <a className="badge" href="#">
+            Facebook
+          </a>
+          <a className="badge" href="#">
+            YouTube
+          </a>
         </div>
       </div>
     </footer>
@@ -200,6 +391,7 @@ export default function Page() {
       <Hero />
       <Cursos />
       <Diferenciais />
+      <Credenciais />
       <Depoimentos />
       <Matricula />
       <Footer />
